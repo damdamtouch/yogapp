@@ -1,0 +1,85 @@
+#mainDiv {
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+}
+
+#tabbar {
+  left: 0;
+  bottom: 0;
+
+  color: blue;
+  background-color: #fff;
+
+  height: 5rem;
+  width: 100%;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#navbar {
+  left: 0;
+  top: 0;
+  color: blue;
+  background-color: #fff;
+
+  height: 5rem;
+  width: 100%;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#filterring {
+  left: 0;
+  color: blue;
+  background-color: #fff;
+  margin: auto;
+
+  height: 5rem;
+  width: 100%;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#map {
+  left: 0;
+  color: blue;
+  background-color: #fff;
+  height: 300px;
+  margin: auto;
+
+  width: 100%;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+#popular {
+  color: blue;
+  background-color: #fff;
+  margin: auto;
+
+  height: 5rem;
+  width: 100%;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  box-sizing: border-box;
+}
