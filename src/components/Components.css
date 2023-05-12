@@ -2,12 +2,33 @@
   height: 100svh;
   display: flex;
   flex-direction: column;
+  margin: 0.5rem;
+}
+
+#mainDiv > * {
+  margin: auto;
+  color: blue;
+  background-color: #fff;
+
+  height: 5rem;
+  width: 100%;
+  border-radius: 50px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+#map {
+  height: 350px;
 }
 
 #tabbar {
-  left: 0;
-  bottom: 0;
+  margin-top: 0px;
+}
 
+/* 
+#tabbar {
   color: blue;
   background-color: #fff;
 
@@ -18,12 +39,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-sizing: border-box;
 }
 
 #navbar {
-  left: 0;
-  top: 0;
   color: blue;
   background-color: #fff;
 
@@ -34,11 +52,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-sizing: border-box;
 }
 
 #filterring {
-  left: 0;
   color: blue;
   background-color: #fff;
   margin: auto;
@@ -50,11 +66,9 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-sizing: border-box;
 }
 
 #map {
-  left: 0;
   color: blue;
   background-color: #fff;
   height: 300px;
@@ -66,7 +80,6 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-sizing: border-box;
 }
 
 #popular {
@@ -81,5 +94,4 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  box-sizing: border-box;
-}
+} */
