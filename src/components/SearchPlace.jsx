@@ -6,15 +6,14 @@ import Button from "@mui/material/Button";
 
 function SearchPlace() {
   const [mySpots, setMySpots] = useState();
-  const [spot, setSpot] = useState();
 
+  const [spot, setSpot] = useState();
+  const [show, isShow] = useState(false);
+  const [myPhotos, setMyPhotos] = useState([]);
+  const [imgURL, setImgURL] = useState();
   const myPosForDev = { lng: 2.3855763, lat: 48.8582623 };
 
   const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
-  //const nearby = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=48.8582623,2.3855763&radius=1500&keyword=yoga&key=AIzaSyBSj0lykQxtT0bmiXbnIHxlnlSfRYL0tcM"
-  //const detailURL =("https://maps.googleapis.com/maps/api/place/details/json?place_id=ChIJi-j8t3dy5kcRbyt9zBNbqug&key=AIzaSyBSj0lykQxtT0bmiXbnIHxlnlSfRYL0tcM");
-
-  console.log(nearby);
 
   useEffect(() => {
     axios
@@ -24,7 +23,7 @@ function SearchPlace() {
         },
       })
       .then(({ data }) => {
-        console.log("list", data);
+        //console.log("list", data);
         setMySpots(data.results);
       })
       .catch((error) => console.table({ message: error.message, error }));
@@ -34,15 +33,39 @@ function SearchPlace() {
     //const id = "ChIJi-j8t3dy5kcRbyt9zBNbqug";
     const detailURL = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${yogaID}&key=${googleAPI}`;
 
-    const response = await axios
+    axios
       .get(detailURL)
       .then(({ data }) => {
-        console.log("detail", data.result);
+        //console.log("detail", data.result);
         setSpot(data.result);
       })
       .catch((error) => console.table({ message: error.message, error }));
 
-    return <div>blabla</div>;
+    const maxWidth = 500;
+    const maxHeight = 500;
+
+    const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+    //console.log("ma phtoo", photoURL);
+    // console.log("photo", spot.photos.length, photoURL);
+
+    // for (let i = 0; i < spot.photos.length; i++) {
+    //const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[i].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+
+    axios
+      .get(photoURL, {
+        responseType: "blob",
+      })
+      .then((response) => {
+        // console.log("detaille de la photo", response);
+        setMyPhotos(response.data);
+        console.log("my array", myPhotos);
+        setImgURL(URL.createObjectURL(myPhotos));
+        console.log("url  ", imgURL);
+      })
+      .catch((error) => console.table({ message: error.message, error }));
+    // }
+
+    isShow(true);
   }
 
   if (!mySpots) {
@@ -51,6 +74,24 @@ function SearchPlace() {
 
   return (
     <div>
+      {show && (
+        <div>
+          <h1>Page detail</h1>
+          <p>{spot.name}</p>
+          <p>{spot.formatted_address}</p>
+          <p>{spot.website}</p>
+          <p>{spot.international_phone_number}</p>
+          <p>{spot.geometry.location.lat}</p>
+          <p>{spot.geometry.location.lng}</p>
+
+          <p>{spot.url}</p>
+          <p>Rating : {spot.rating}</p>
+
+          {console.log("test ici blob", imgURL)}
+          <img src={imgURL} alt="yoga" />
+        </div>
+      )}
+
       {mySpots.map((spot) => {
         return (
           <Button

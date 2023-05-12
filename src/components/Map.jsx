@@ -5,7 +5,9 @@ import { googleAPI } from "/private/privateVar.js";
 import axios from "axios";
 
 function Map() {
-  const [pin, setPin] = useState({});
+  // var sydney = new google.maps
+  // console.log("syfney", sydney.toUrlValue());
+  // const [pin, setPin] = useState({});
 
   const [center, setCenter] = useState({ lng: 2.3855763, lat: 48.8582623 });
 
