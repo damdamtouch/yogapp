@@ -1,5 +1,5 @@
 #mainDiv {
-  height: 100svh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   margin: 0.5rem;
@@ -20,78 +20,10 @@
 }
 
 #map {
-  height: 350px;
+  height: 20rem;
 }
 
-#tabbar {
-  margin-top: 0px;
-}
-
-/* 
-#tabbar {
-  color: blue;
-  background-color: #fff;
-
-  height: 5rem;
-  width: 100%;
-  border-radius: 50px;
-
+#searchMain{
   display: flex;
-  justify-content: space-around;
-  align-items: center;
+  flex-direction: column;
 }
-
-#navbar {
-  color: blue;
-  background-color: #fff;
-
-  height: 5rem;
-  width: 100%;
-  border-radius: 50px;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#filterring {
-  color: blue;
-  background-color: #fff;
-  margin: auto;
-
-  height: 5rem;
-  width: 100%;
-  border-radius: 50px;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#map {
-  color: blue;
-  background-color: #fff;
-  height: 300px;
-  margin: auto;
-
-  width: 100%;
-  border-radius: 50px;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
-
-#popular {
-  color: blue;
-  background-color: #fff;
-  margin: auto;
-
-  height: 5rem;
-  width: 100%;
-  border-radius: 50px;
-
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-} */

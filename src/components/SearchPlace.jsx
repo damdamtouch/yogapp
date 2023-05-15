@@ -3,8 +3,10 @@ import axios from "axios";
 import { useState } from "react";
 import { googleAPI } from "../../private/privateVar";
 import Button from "@mui/material/Button";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
-function SearchPlace() {
+function SearchPlace(props) {
   const [mySpots, setMySpots] = useState();
 
   const [spot, setSpot] = useState();
@@ -73,7 +75,7 @@ function SearchPlace() {
   }
 
   return (
-    <div>
+    <div id="searchMain">
       {show && (
         <div>
           <h1>Page detail</h1>
@@ -94,15 +96,21 @@ function SearchPlace() {
 
       {mySpots.map((spot) => {
         return (
-          <Button
-            variant="outlined"
-            onClick={() => {
-              handleClick(spot.place_id);
-            }}
-            key={spot.place_id}
-          >
-            <div>{spot.name}</div>
-          </Button>
+          <p key={spot.place_id}>
+            <Button
+              variant="outlined"
+              onClick={() => {
+                handleClick(spot.place_id);
+              }}
+            >
+              <div>{spot.name}</div>
+            </Button>
+            <FavoriteBorderIcon
+              onClick={() => {
+                console.log("star clicked", spot.place_id);
+              }}
+            ></FavoriteBorderIcon>
+          </p>
         );
       })}
     </div>

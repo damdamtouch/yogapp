@@ -3,13 +3,15 @@ import { useState, useEffect } from "react";
 import { GoogleMap, Marker, useJsApiLoader } from "@react-google-maps/api";
 import { googleAPI } from "/private/privateVar.js";
 import axios from "axios";
+let nearby;
 
 function Map() {
   // var sydney = new google.maps
   // console.log("syfney", sydney.toUrlValue());
-  // const [pin, setPin] = useState({});
 
   const [center, setCenter] = useState({ lng: 2.3855763, lat: 48.8582623 });
+  const [yogaSpots, setYogaSpots] = useState([]);
+  // const [pin, setPin] = useState({});
 
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
@@ -40,17 +42,7 @@ function Map() {
     //const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${center.latitude}, ${center.longitude}&radius=1500&keyword=yoga&key=${googleAPI}`;
 
     //PROD
-    const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${crd.latitude}, ${crd.longitude}&radius=1500&keyword=yoga&key=${googleAPI}`;
-    axios
-      .get(nearby, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-      })
-      .then(({ data }) => console.log(data.results))
-      .catch((error) => console.table({ message: error.message, error }));
-
-    //setPin(data.results);
+    nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${currentPosition.lat},${currentPosition.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
   }
   const options = {
     enableHighAccuracy: true,
@@ -80,6 +72,20 @@ function Map() {
   /* */
 
   /* Loading yoga */
+  useEffect(() => {
+    console.log("nearby : ", nearby);
+    axios
+      .get(nearby, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+      .then(({ data }) => {
+        //console.log("list", data.results);
+        setYogaSpots(data.results);
+      })
+      .catch((error) => console.table({ message: error.message, error }));
+  }, [center]);
 
   /* End loading */
 
@@ -88,11 +94,30 @@ function Map() {
       <GoogleMap
         mapContainerStyle={containerStyle}
         center={center}
-        // zoom={12}
         onLoad={onLoad}
         onUnmount={onUnmount}
+        onClick={(e) => console.log("centerchanged", e)}
       >
-        <Marker position={{ lat: center.lat, lng: center.lng }} />;
+        {console.log("kikou", yogaSpots)}
+        {[...yogaSpots].map((spot) => {
+          console.log(spot);
+          return (
+            <Marker
+              key={spot.place_id}
+              position={{
+                lat: spot.geometry.location.lat,
+                lng: spot.geometry.location.lng,
+              }}
+            />
+          );
+        })}
+        <Marker
+          position={{ lat: center.lat, lng: center.lng }}
+          icon={
+            "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png"
+          }
+        />
+        ;
       </GoogleMap>
     </div>
   ) : (

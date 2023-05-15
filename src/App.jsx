@@ -4,6 +4,7 @@ import "./App.css";
 import { Routes, Route } from "react-router-dom";
 import UnderContruction from "./pages/UnderContruction";
 import SearchPlace from "./components/SearchPlace";
+import User from "./components/User";
 
 function App() {
   //const [count, setCount] = useState(0);
@@ -12,7 +13,9 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="search" element={<SearchPlace />}></Route>
+        <Route path="search" element={<SearchPlace />} />
+        <Route path="user" element={<User />} />
+
         <Route path="*" element={<UnderContruction />} />
       </Routes>
     </>
