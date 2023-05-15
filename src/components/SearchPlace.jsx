@@ -15,8 +15,10 @@ function SearchPlace(props) {
   const [imgURL, setImgURL] = useState();
   const myPosForDev = { lng: 2.3855763, lat: 48.8582623 };
 
- // const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
-  const nearby = `/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
+  //console.log("printing the props", props);
+
+  const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
+  // const nearby = `/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
   useEffect(() => {
     axios
       .get(nearby, {
@@ -46,14 +48,8 @@ function SearchPlace(props) {
     const maxWidth = 500;
     const maxHeight = 500;
 
-    //const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
-    const photoURL = `/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
-
-    //console.log("ma phtoo", photoURL);
-    // console.log("photo", spot.photos.length, photoURL);
-
-    // for (let i = 0; i < spot.photos.length; i++) {
-    //const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[i].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+    const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+    //const photoURL = `/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
 
     axios
       .get(photoURL, {
@@ -70,6 +66,40 @@ function SearchPlace(props) {
     // }
 
     isShow(true);
+  }
+
+  function handlingStarClicked(spotID, alreadyLiked) {
+    console.log(
+      "handling Star for spot ",
+      spotID,
+      props.user._id,
+      alreadyLiked
+    );
+    if (alreadyLiked) {
+      console.log("i'm going to delete is for user ", props.user);
+    } else {
+      const dataToSend = [props.user.favorites];
+      console.log("checking", dataToSend);
+      dataToSend.push(spotID);
+      console.log("going to add", dataToSend);
+
+      // const bodyToSend = new FormData();
+      // dataToSend.forEach((item) => {
+      //   bodyToSend.append("favorites[]", item);
+      // });
+
+      console.log("here is the body", { favorites: dataToSend });
+      let urlToPatch = `https://ironrest.fly.dev/api/yogapp/${props.user._id}/`;
+      //console.log("i'm going to add it ", props.user);
+      console.log("at url ", { favorites: dataToSend });
+
+      axios
+        .patch(urlToPatch, { favorites: dataToSend })
+        .then((response) => {
+          console.log("here the reponse", response);
+        })
+        .catch((err) => console.log(err));
+    }
   }
 
   if (!mySpots) {
@@ -97,6 +127,25 @@ function SearchPlace(props) {
       )}
 
       {mySpots.map((spot) => {
+        let button;
+        if (props.user && props.user.favorites.includes(spot.place_id)) {
+          button = (
+            <FavoriteIcon
+              onClick={() => {
+                handlingStarClicked(spot.place_id, true);
+              }}
+            ></FavoriteIcon>
+          );
+        } else {
+          button = (
+            <FavoriteBorderIcon
+              onClick={() => {
+                handlingStarClicked(spot.place_id, false);
+              }}
+            ></FavoriteBorderIcon>
+          );
+        }
+
         return (
           <p key={spot.place_id}>
             <Button
@@ -107,11 +156,7 @@ function SearchPlace(props) {
             >
               <div>{spot.name}</div>
             </Button>
-            <FavoriteBorderIcon
-              onClick={() => {
-                console.log("star clicked", spot.place_id);
-              }}
-            ></FavoriteBorderIcon>
+            {button}
           </p>
         );
       })}

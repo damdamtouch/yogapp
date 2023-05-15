@@ -1,43 +1,63 @@
-import React from "react";
+//import React from "react";
 import { useState } from "react";
 import SearchPlace from "./SearchPlace";
 import { Input, Button } from "@mui/material";
 import axios from "axios";
-// import { apiURL } from "../../private/privateVar";
+
 const apiURL = "https://ironrest.fly.dev/api/yogapp/";
 
 function User() {
   const [user, setUser] = useState("");
-  const [userList, setUserList] = useState([]);
+  const [userWithInfo, setUserWithInfo] = useState(null);
+  const [displayCreate, setDisplayCreate] = useState(false);
+  const [password, setPassword] = useState("");
+  // const [userList, setUserList] = useState([]);
 
   function handleSubmit(event) {
+    let userFound = false;
     event.preventDefault();
-    console.log("sand", user, event);
-    console.log("salut", apiURL);
-    axios
-      .get(apiURL)
-      .then((response) => {
-        //console.log("list", response.data);
-        setUserList(response.data);
-        //console.log("salut", userList);
-      })
-      .catch((error) => console.table({ message: error.message, error }));
+    console.log("send", user);
 
-    console.log("the object", userList);
-    //console.log(Object.values(userList).indexOf("damdam"));
-    userList.forEach((eachUser) => {
-      console.log("print user", eachUser.userName);
-      console.log("to compare", user);
-      console.log(Object.values(eachUser).indexOf(user));
-      //   if(eachUser.userName.toLowerCase() === user.toLowerCase()){
-      //     console.log("found !")
-      //   }
-    });
+    async function getUser() {
+      const userList = await axios.get(apiURL);
+      console.log(userList.data);
+      if (!userList.data.length) {
+        console.log("kikou");
+        setDisplayCreate(true);
+      }
+      userList.data.forEach((eachUser) => {
+        console.log("print user", eachUser);
+        console.log(Object.values(eachUser).indexOf(user));
+        if (Object.values(eachUser).indexOf(user) > -1) {
+          setUserWithInfo(eachUser);
+          userFound = true;
+        }
+        if (userFound) {
+          console.log("the user exsit", userWithInfo);
+          setDisplayCreate(false);
+        } else {
+          console.log("want to create ?");
+          setDisplayCreate(true);
+        }
+      });
+    }
+    getUser();
+  }
+
+  function handleCreate(event) {
+    event.preventDefault();
+    console.log("creating the user", user, password);
+    axios
+      .post(apiURL, { userName: user, password: password, favorites: [] })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => console.log(error));
   }
 
   return (
     <div>
-      Search or Creatin User
+      <h2>Search or Creatin User</h2>
       <form onSubmit={handleSubmit}>
         <Input
           placeholder="Enter a value"
@@ -48,7 +68,21 @@ function User() {
           Search
         </Button>
       </form>
-      {/* <SearchPlace /> */}
+      {userWithInfo && <SearchPlace user={userWithInfo} />}
+      {displayCreate && (
+        <form onSubmit={() => handleCreate(event)}>
+          <h3>User not found do you want to create it ?</h3>
+          <Input placeholder="user Name" value={user}></Input>
+          <Input
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          ></Input>
+          <Button type="submit" variant="outlined">
+            Create
+          </Button>
+        </form>
+      )}
     </div>
   );
 }
