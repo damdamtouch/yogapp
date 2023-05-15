@@ -15,8 +15,8 @@ function SearchPlace(props) {
   const [imgURL, setImgURL] = useState();
   const myPosForDev = { lng: 2.3855763, lat: 48.8582623 };
 
-  const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
-
+  //const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
+  const nearby = `/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
   useEffect(() => {
     axios
       .get(nearby, {
@@ -33,8 +33,8 @@ function SearchPlace(props) {
 
   async function handleClick(yogaID) {
     //const id = "ChIJi-j8t3dy5kcRbyt9zBNbqug";
-    const detailURL = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${yogaID}&key=${googleAPI}`;
-
+    //const detailURL = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${yogaID}&key=${googleAPI}`;
+    const detailURL = `/api/place/details/json?place_id=${yogaID}&key=${googleAPI}`;
     axios
       .get(detailURL)
       .then(({ data }) => {
@@ -46,7 +46,9 @@ function SearchPlace(props) {
     const maxWidth = 500;
     const maxHeight = 500;
 
-    const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+    //const photoURL = `https://maps.googleapis.com/maps/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+    const photoURL = `/api/place/photo?photoreference=${spot.photos[0].photo_reference}&sensor=false&maxheight=${maxHeight}&maxwidth=${maxWidth}&key=${googleAPI}`;
+
     //console.log("ma phtoo", photoURL);
     // console.log("photo", spot.photos.length, photoURL);
 
