@@ -42,7 +42,7 @@ function UnderContruction() {
           <h1>Get ready for the change.</h1>
           <p>
             Website coming soon. Please check back to know more. Shoot us an
-            email if you're curious.
+            email if you are curious.
           </p>
         </div>
         <a href="mailto:damdam@example.com">
