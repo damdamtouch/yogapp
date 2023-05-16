@@ -3,6 +3,8 @@ import { useState } from "react";
 import SearchPlace from "./SearchPlace";
 import { Input, Button } from "@mui/material";
 import axios from "axios";
+import HomeIcon from "@mui/icons-material/Home";
+import { Link } from "react-router-dom";
 
 const apiURL = "https://ironrest.fly.dev/api/yogapp/";
 
@@ -81,7 +83,12 @@ function User() {
 
   return (
     <div>
-      <h2>Search or Creatin User</h2>
+      <Link to="/">
+        <h2>
+          {" "}
+          <HomeIcon></HomeIcon>Search or Creatin User
+        </h2>
+      </Link>
       {!displayCreate && (
         <form onSubmit={handleSubmit}>
           <Input

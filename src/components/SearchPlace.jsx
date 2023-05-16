@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+//import React, { useEffect } from "react";
 import axios from "axios";
 import { useState } from "react";
 import { googleAPI } from "../../private/privateVar";
 import Button from "@mui/material/Button";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { useEffect } from "react";
 
 function SearchPlace(props) {
   const [mySpots, setMySpots] = useState();
@@ -119,6 +120,7 @@ function SearchPlace(props) {
 
   return (
     <div id="searchMain">
+
       {show && (
         <div>
           <h1>Page detail</h1>
