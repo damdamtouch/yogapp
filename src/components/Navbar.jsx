@@ -1,17 +1,28 @@
 // import React from "react";
-import { Input, Button } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
+import TuneIcon from "@mui/icons-material/Tune";
+import { Input } from "@mui/material";
+import { InputAdornment } from "@mui/material";
 
 function Navbar() {
   return (
     <div id="navbar">
-              <img src="/public/icon.png"></img>
+      <img src="/public/icon.png"></img>
       <p>
-Hello Damdam !
+        Hello <b>Damdam</b> !
       </p>
-      <p>Find Your Class</p>
+      <h2>Find Your Class</h2>
       <form>
-        <input placeholder="Search here..."></input>
-        <Button>Settings</Button>
+        <Input
+          placeholder="Search here..."
+          endAdornment={
+            <InputAdornment position="end">
+              <SearchIcon></SearchIcon>
+            </InputAdornment>
+          }
+        ></Input>
+
+        {/* <TuneIcon></TuneIcon> */}
       </form>
     </div>
   );

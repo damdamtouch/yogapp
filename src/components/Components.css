@@ -12,7 +12,6 @@
 
 #mainDiv > * {
   margin: auto;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 
   background-color: #fff;
   color: #292931;
@@ -28,6 +27,8 @@
 /** General Page ****/
 #navbar {
   flex-direction: column;
+  background-color: transparent;
+  box-shadow: 0 0px 0px rgb(0 0 0 / 0.2);
   height: 7rem;
   display: flex;
   padding: 0 2rem;
@@ -45,6 +46,14 @@
   margin: 0;
 }
 
+input {
+  color: grey;
+  background-color: transparent;
+  border-radius: 10px;
+  height: 2em;
+
+}
+
 #filterring {
   box-shadow: 0 0px 0px rgb(0 0 0 / 0.2);
   background-color: transparent;
@@ -56,9 +65,11 @@ ul {
 
 #map {
   height: 20rem;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 #popular {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   padding-top: 0.5rem;
   background-color: white;
   text-align: left;
@@ -87,6 +98,7 @@ ul {
 }
 
 #tabbar {
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
   height: 5rem;
   & * {
     margin: auto;
