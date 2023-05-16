@@ -27,16 +27,18 @@
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
 <!-- PROJECT LOGO -->
+
 <br />
 <div align="center">
   <a href="https://github.com/damdamtouch/yogapp">
-    <img src="https://raw.githubusercontent.com/damdamtouch/yogapp/public/logo.png" alt="Logo" width="88" height="80">
+    <img src="https://github.com/damdamtouch/yogapp/blob/main/public/logo.png?raw=true" alt="Logo" width="88" height="80">
+
   </a>
 
-<h3 align="center">Tetris</h3>
+<h3 align="center">Yogapp</h3>
 
   <p align="center">
-    A simple little Tetris done for Ironhack first project.
+    An application to gather all you favorites Yoga Spots
     <br />
     <a href="https://github.com/damdamtouch/yogapp"><strong>Explore the docs »</strong></a>
     <br />
@@ -70,7 +72,7 @@
 ## About The Project
 
   <a href="https://damdamtouch.github.io/yogapp/">
-    <img src="https://raw.githubusercontent.com/damdamtouch/yogapp/main/media/thegame.png" alt="screen" width="400" height="400">
+    <img src="https://raw.githubusercontent.com/damdamtouch/yogapp/main/public/logo.png" alt="screen" width="400" height="400">
   </a>
 
 Please enjoy playing to a little tetris. Very easy, no frills, just chill. May be still a bit buggy... Sorry about that !
@@ -88,10 +90,12 @@ Please enjoy playing to a little tetris. Very easy, no frills, just chill. May b
 - [![Laravel][Laravel.com]][Laravel-url]
 - [![Bootstrap][Bootstrap.com]][Bootstrap-url]
 - [![JQuery][JQuery.com]][JQuery-url]
--->
-
 - [![Javascript][javascript.com]][javascript-url]
 - [![HTML5][html5]][html5-url]
+-->
+
+- [![React][React.js]][React-url]
+
 - [![CSS3][css3]][css3]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -100,11 +104,11 @@ Please enjoy playing to a little tetris. Very easy, no frills, just chill. May b
 
 ## Getting Started
 
-Once again it's a super easy little game made for fun.
+Launch the app to start enjoying it !
 
 ### Prerequisites
 
-At least one finger.
+Be flexible and peace.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
