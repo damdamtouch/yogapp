@@ -8,14 +8,11 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 
 function SearchPlace(props) {
   const [mySpots, setMySpots] = useState();
-
   const [spot, setSpot] = useState();
   const [show, isShow] = useState(false);
   const [myPhotos, setMyPhotos] = useState([]);
   const [imgURL, setImgURL] = useState();
   const myPosForDev = { lng: 2.3855763, lat: 48.8582623 };
-
-  //console.log("printing the props", props);
 
   const nearby = `https://maps.googleapis.com/maps/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
   // const nearby = `/api/place/nearbysearch/json?location=${myPosForDev.lat},${myPosForDev.lng}&radius=1500&keyword=yoga&key=${googleAPI}`;
@@ -34,7 +31,6 @@ function SearchPlace(props) {
   }, []);
 
   async function handleClick(yogaID) {
-    //const id = "ChIJi-j8t3dy5kcRbyt9zBNbqug";
     const detailURL = `https://maps.googleapis.com/maps/api/place/details/json?place_id=${yogaID}&key=${googleAPI}`;
     //const detailURL = `/api/place/details/json?place_id=${yogaID}&key=${googleAPI}`;
     axios
@@ -63,43 +59,58 @@ function SearchPlace(props) {
         console.log("url  ", imgURL);
       })
       .catch((error) => console.table({ message: error.message, error }));
-    // }
 
     isShow(true);
   }
 
   function handlingStarClicked(spotID, alreadyLiked) {
+    let urlToPatch = `https://ironrest.fly.dev/api/yogapp/${props.user._id}/`;
+
     console.log(
       "handling Star for spot ",
       spotID,
-      props.user._id,
+      // props.user._id,
       alreadyLiked
     );
     if (alreadyLiked) {
       console.log("i'm going to delete is for user ", props.user);
-    } else {
-      const dataToSend = [props.user.favorites];
-      console.log("checking", dataToSend);
-      dataToSend.push(spotID);
-      console.log("going to add", dataToSend);
+      let dataToSend = [];
+      dataToSend = [...props.user.favorites];
+      console.log(dataToSend);
+      dataToSend = dataToSend.filter((favorite) => favorite != spotID);
 
-      // const bodyToSend = new FormData();
-      // dataToSend.forEach((item) => {
-      //   bodyToSend.append("favorites[]", item);
-      // });
+      console.log("filtered", dataToSend);
+      axios
+        .patch(urlToPatch, { favorites: dataToSend })
+        .then((response) => {
+          props.setUserWithInfo(response.data);
+          console.log("here the reponse", response);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      let dataToSend = [];
+      if (props.user.favorites) {
+        dataToSend = [...props.user.favorites];
+      }
+
+      //console.log("checking", dataToSend);
+      dataToSend.push(spotID);
+      //console.log("going to add", dataToSend);
 
       console.log("here is the body", { favorites: dataToSend });
-      let urlToPatch = `https://ironrest.fly.dev/api/yogapp/${props.user._id}/`;
       //console.log("i'm going to add it ", props.user);
-      console.log("at url ", { favorites: dataToSend });
 
       axios
         .patch(urlToPatch, { favorites: dataToSend })
         .then((response) => {
+          props.setUserWithInfo(response.data);
           console.log("here the reponse", response);
         })
         .catch((err) => console.log(err));
     }
+    //console.log("salut le props", props.method);
+    //props.getUser();
+    isShow(false);
   }
 
   if (!mySpots) {
@@ -128,7 +139,11 @@ function SearchPlace(props) {
 
       {mySpots.map((spot) => {
         let button;
-        if (props.user && props.user.favorites.includes(spot.place_id)) {
+        if (
+          props.user &&
+          props.user.favorites &&
+          props.user.favorites.includes(spot.place_id)
+        ) {
           button = (
             <FavoriteIcon
               onClick={() => {
