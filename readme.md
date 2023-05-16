@@ -29,8 +29,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/damdamtouch/ironhack-project1">
-    <img src="https://raw.githubusercontent.com/damdamtouch/ironhack-project1/main/media/background.jpg" alt="Logo" width="88" height="80">
+  <a href="https://github.com/damdamtouch/yogapp">
+    <img src="https://raw.githubusercontent.com/damdamtouch/yogapp/public/logo.png" alt="Logo" width="88" height="80">
   </a>
 
 <h3 align="center">Tetris</h3>
@@ -38,14 +38,14 @@
   <p align="center">
     A simple little Tetris done for Ironhack first project.
     <br />
-    <a href="https://github.com/damdamtouch/ironhack-project1"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/damdamtouch/yogapp"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://damdamtouch.github.io/ironhack-project1/">View Demo</a>
+    <a href="https://damdamtouch.github.io/yogapp/">View Demo</a>
     ·
-    <a href="https://github.com/damdamtouch/ironhack-project1/issues">Report Bug</a>
+    <a href="https://github.com/damdamtouch/yogapp/issues">Report Bug</a>
     ·
-    <a href="https://github.com/damdamtouch/ironhack-project1/issues">Request Feature</a>
+    <a href="https://github.com/damdamtouch/yogapp/issues">Request Feature</a>
   </p>
 </div>
 
@@ -69,8 +69,8 @@
 
 ## About The Project
 
-  <a href="https://damdamtouch.github.io/ironhack-project1/">
-    <img src="https://raw.githubusercontent.com/damdamtouch/ironhack-project1/main/media/thegame.png" alt="screen" width="400" height="400">
+  <a href="https://damdamtouch.github.io/yogapp/">
+    <img src="https://raw.githubusercontent.com/damdamtouch/yogapp/main/media/thegame.png" alt="screen" width="400" height="400">
   </a>
 
 Please enjoy playing to a little tetris. Very easy, no frills, just chill. May be still a bit buggy... Sorry about that !
@@ -122,11 +122,11 @@ Go to the URL, click on start, super simple :
 
 BUT BE CAREFUL !! Every 10seconds a new line will appear from the bottom with just one empty cell.
 
-For more examples, please refer to the [Documentation](https://github.com/damdamtouch/ironhack-project1/wiki)
+For more examples, please refer to the [Documentation](https://github.com/damdamtouch/yogapp/wiki)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-See the [open issues](https://github.com/damdamtouch/ironhack-project1/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/damdamtouch/yogapp/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -151,16 +151,16 @@ Other Projects : [https://github.com/damdamtouch/](https://github.com/damdamtouc
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[contributors-shield]: https://img.shields.io/github/contributors/damdamtouch/ironhack-project1.svg?style=for-the-badge
-[contributors-url]: https://github.com/damdamtouch/ironhack-project1/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/damdamtouch/ironhack-project1.svg?style=for-the-badge
-[forks-url]: https://github.com/damdamtouch/ironhack-project1/network/members
-[stars-shield]: https://img.shields.io/github/stars/damdamtouch/ironhack-project1.svg?style=for-the-badge
-[stars-url]: https://github.com/damdamtouch/ironhack-project1/stargazers
-[issues-shield]: https://img.shields.io/github/issues/damdamtouch/ironhack-project1.svg?style=for-the-badge
-[issues-url]: https://github.com/damdamtouch/ironhack-project1/issues
-[license-shield]: https://img.shields.io/github/license/damdamtouch/ironhack-project1.svg?style=for-the-badge
-[license-url]: https://github.com/damdamtouch/ironhack-project1/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/damdamtouch/yogapp.svg?style=for-the-badge
+[contributors-url]: https://github.com/damdamtouch/yogapp/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/damdamtouch/yogapp.svg?style=for-the-badge
+[forks-url]: https://github.com/damdamtouch/yogapp/network/members
+[stars-shield]: https://img.shields.io/github/stars/damdamtouch/yogapp.svg?style=for-the-badge
+[stars-url]: https://github.com/damdamtouch/yogapp/stargazers
+[issues-shield]: https://img.shields.io/github/issues/damdamtouch/yogapp.svg?style=for-the-badge
+[issues-url]: https://github.com/damdamtouch/yogapp/issues
+[license-shield]: https://img.shields.io/github/license/damdamtouch/yogapp.svg?style=for-the-badge
+[license-url]: https://github.com/damdamtouch/yogapp/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/damien-audrezet
 [product-screenshot]: images/screenshot.png
