@@ -110,3 +110,14 @@ ul {
   display: flex;
   flex-direction: column;
 }
+
+#connection {
+  margin-top: 10%;
+
+  & button {
+    margin-top: 10px;
+  }
+  & #signUpLine {
+    margin-top: 20%;
+  }
+}

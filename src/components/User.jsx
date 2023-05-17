@@ -13,7 +13,9 @@ function User() {
   const [userWithInfo, setUserWithInfo] = useState(null);
   const [displayCreate, setDisplayCreate] = useState(false);
   const [password, setPassword] = useState("");
+  const [connected, setConnected] = useState(false);
   let userFound;
+  //let connected = false;
   // const [userList, setUserList] = useState([]);
 
   function handleSubmit(event) {
@@ -33,6 +35,7 @@ function User() {
         if (Object.values(eachUser).indexOf(user) > -1) {
           setUserWithInfo(eachUser);
           userFound = true;
+          setConnected(true);
         }
         if (userFound) {
           console.log("the user exsit", userWithInfo);
@@ -86,20 +89,32 @@ function User() {
       <Link to="/">
         <h2>
           {" "}
-          <HomeIcon></HomeIcon>Search or Creatin User
+          <HomeIcon></HomeIcon>
         </h2>
       </Link>
-      {!displayCreate && (
-        <form onSubmit={handleSubmit}>
-          <Input
-            placeholder="Enter a value"
-            value={user}
-            onChange={(e) => setUser(e.target.value)}
-          ></Input>
-          <Button type="submit" variant="outlined">
-            Search
-          </Button>
-        </form>
+      {!displayCreate && !connected && (
+        <div id="connection">
+          <form onSubmit={handleSubmit}>
+            <h3>Log In</h3>
+            <p> Username</p>
+            <Input
+              placeholder="User"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
+            ></Input>
+            <p>Password</p>
+            <Input placeholder="Password" type="password"></Input>
+            <br></br>
+            <Button type="submit" variant="outlined">
+              Login
+            </Button>
+            <br></br>
+            <Button id="signUpLine" onClick={() => setDisplayCreate(true)}>
+              {" "}
+              Or sign Up
+            </Button>
+          </form>
+        </div>
       )}
       {userWithInfo && !displayCreate && (
         <SearchPlace user={userWithInfo} setUserWithInfo={setUserWithInfo} />

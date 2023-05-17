@@ -123,7 +123,7 @@ function SearchPlace(props) {
 
       {show && (
         <div>
-          <h1>Page detail</h1>
+          <h1>Details</h1>
           <p>{spot.name}</p>
           <p>{spot.formatted_address}</p>
           <p>{spot.website}</p>
