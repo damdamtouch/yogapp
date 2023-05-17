@@ -51,7 +51,6 @@ input {
   background-color: transparent;
   border-radius: 10px;
   height: 2em;
-
 }
 
 #filterring {
@@ -92,6 +91,7 @@ ul {
   justify-content: left;
   margin-bottom: 0;
   margin-left: 1rem;
+  margin: auto;
 }
 #popular p {
   color: #898989;
